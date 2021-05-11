@@ -67,7 +67,7 @@ class Product(Country, Brand, Season):
 		return f"Your quantity is decrease by {decrease_quant}\nNow your total quantity: {self.product_quantity}\nTotal price after discount: {self.disc_price * self.product_quantity}"
 
 
-print("Present product")
+print("Present product 1")
 product_1 = Product("Spain","Europe","Zara", 1974 , "summer", 20, "T-shirts", "clotes", 50, 2)
 print(product_1.present())
 print("-----------")
@@ -83,9 +83,11 @@ print("-----------")
 print("***********")
 print("-----------")
 
+print("Present product 2")
 product_2 = Product("Spanish","Europe","Mango", 1984 , "summer", 22, "Skirts", "clotes", 45, 4)
 print(product_2.present())
 print("-----------")
+print("Discount price")
 print(product_2.discount_product(10))
 print("-----------")
 print("Decrease quantity")
