@@ -72,3 +72,4 @@ print(square_1.present())
 print(square_1.area())
 print(square_1.perimeter())
 print(square_1.diagonal())
+
