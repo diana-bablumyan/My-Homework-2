@@ -24,6 +24,21 @@ class Hotel:
             self.rooms_lux['room'+ str(answer)] = "busy"
 
             return self.rooms_lux
+
+    def available_list_mid(self):
+        number_avail_mid = []
+        for i in self.rooms_mid.keys():
+            if self.rooms_mid[i] == 'free':
+                number_avail_mid.append(i)
+        return number_avail_mid
+
+    def available_list_lux(self):
+        number_avail_lux = []
+        for i in self.rooms_lux.keys():
+            if self.rooms_lux[i] == 'free':
+                number_avail_lux.append(i)
+        return number_avail_lux
+            
  
     def available_room_check(self):
 
@@ -66,6 +81,8 @@ hotel1 = Hotel("Apaga resort", "Tavush", dict(room1 = 'free', room2 = 'free', ro
 # print(hotel1.available_room_check())
 # print(hotel1.discount(5))
 # print(hotel1.representation_hotel())
+# print(hotel1.available_list_mid())
+# print(hotel1.available_list_lux())
 
 
 class Taxi:
@@ -74,7 +91,8 @@ class Taxi:
         self.car_types = car_types
         self.price_for_tour = price_for_tour
 
-    def discount(self, disc_rate):
+
+    def discount_taxi(self, disc_rate):
         self.disc_rate = disc_rate
         
         return f"Discoint price for tour: {self.price_for_tour * (1-(self.disc_rate/100))}"
@@ -93,15 +111,17 @@ class Tour(Hotel, Taxi):
 
     def __init__(self, name, place, rooms_mid, mid_room_price, rooms_lux, lux_room_price, car_types, price_for_tour):
         self.name = name
-        self.price_for_one_person_lux = self.lux_room_price + self.discount()
-        self.price_for_one_person_mid = self.mid_room_price + self.discount()
+        
         Hotel.__init__(self, name, place, rooms_mid, mid_room_price, rooms_lux, lux_room_price)
         Taxi.__init__(self, car_types, price_for_tour)
+
         
-
     def representation(self):
+        
+        price_for_one_person_lux = self.lux_room_price + self.price_for_tour
+        price_for_one_person_mid = self.mid_room_price + self.price_for_tour
 
-        return f"Out tour company's offers\nHotel {self.name} located in {self.place}.We can offer you mid: {self.rooms_mid} and lux: {self.rooms_lux} which prices are {mid_room_price} and {lux_room_price}. Without that you can take {self.car_types} type of taxi price of {self.price_for_tour}"
+        return f"Out tour company's offers:\nHotel {self.name} located in {self.place}.We have two types of rooms mid and lux, now from mid rooms are available: {self.available_list_mid()} and lux: {self.available_list_lux()} which prices are {self.mid_room_price} and {self.lux_room_price}. Without that you can take {self.car_types} taxi which price is {self.price_for_tour}. Lux tour for one person {price_for_one_person_lux} and mid tour: {price_for_one_person_mid}"
 
-tour1 = Tour("Garni Hotel", "Garni", dict(room1 = 'free', room2 = 'free', room3 = 'free'), 30000, dict(room1 = 'free', room2 = 'free', room3 = 'free'), 50000, "BMW", 15000)
+tour1 = Tour("Apaga resort", "Tavush", dict(room1 = 'free', room2 = 'free', room3 = 'free'), 30000, dict( room1 = 'free', room2 = 'free', room3 = 'free'), 50000, "BMW", 15000)
 print(tour1.representation())
