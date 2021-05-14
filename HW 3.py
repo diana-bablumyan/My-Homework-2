@@ -121,7 +121,8 @@ class Tour(Hotel, Taxi):
         price_for_one_person_lux = self.lux_room_price + self.price_for_tour
         price_for_one_person_mid = self.mid_room_price + self.price_for_tour
 
-        return f"Out tour company's offers:\nHotel {self.name} located in {self.place}.We have two types of rooms mid and lux, now from mid rooms are available: {self.available_list_mid()} and lux: {self.available_list_lux()} which prices are {self.mid_room_price} and {self.lux_room_price}. Without that you can take {self.car_types} taxi which price is {self.price_for_tour}. Lux tour for one person {price_for_one_person_lux} and mid tour: {price_for_one_person_mid}"
+        return f"Hi. I will present you our tour company's offers:\nHotel {self.name} located in {self.place}.There we have two types of rooms mid and lux, now from mid rooms are available: {self.available_list_mid()} and lux: {self.available_list_lux()} which prices are {self.mid_room_price} and {self.lux_room_price}. Without that you can take {self.car_types} taxi which price is {self.price_for_tour}. Lux tour for one person worth {price_for_one_person_lux} and mid tour: {price_for_one_person_mid}"
 
 tour1 = Tour("Apaga resort", "Tavush", dict(room1 = 'free', room2 = 'free', room3 = 'free'), 30000, dict( room1 = 'free', room2 = 'free', room3 = 'free'), 50000, "BMW", 15000)
+
 print(tour1.representation())
