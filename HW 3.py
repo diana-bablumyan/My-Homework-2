@@ -15,15 +15,19 @@ class Hotel:
         option = input("We have two types of room.What type do you want to book (Mid/Lux)? ")
         if option.lower() == 'mid':
             answer = input(f"Okey. Our free rooms are {self.available_list_mid()}.Which number of room do you want to book (1,2,3): ")
-            self.rooms_mid['room' + str(answer)] = "busy"
-
-            return f"Thank you. You book room N{answer}.We will wait you!"
+            if self.rooms_mid['room' + str(answer)] == "busy":
+                return "Sorry, it's already busy. You have to book another room!"
+            else:
+                self.rooms_mid['room' + str(answer)] = "busy"
+                return f"Thank you. You book room N{answer}.We will wait you!"
 
         if option.lower() == 'lux':
             answer = input(f"Okey. Our free rooms are {self.available_list_lux()}. which number of room do you want to book (1,2,3): ")
-            self.rooms_lux['room'+ str(answer)] = "busy"
-
-            return f"Thank you. You book room N{answer}.We will wait you!"
+            if self.rooms_lux['room'+ str(answer)] == "busy":
+                return "Sorry, it's already busy. You have to book another room!"
+            else:
+                self.rooms_lux['room'+ str(answer)] = "busy"
+                return f"Thank you. You book room N{answer}.We will wait you!"
 
     def available_list_mid(self):
         number_avail_mid = []
@@ -130,4 +134,5 @@ tour1 = Tour("Apaga resort", "Tavush", dict(room1 = 'free', room2 = 'free', room
 # print(tour1.presentation())
 # print(tour1.booking())
 # print(tour1.available_room_check())
+# print(tour1.booking())
 # print(tour1.discount_rooms(10))
