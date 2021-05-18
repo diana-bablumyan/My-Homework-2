@@ -15,11 +15,15 @@ class Cube:
 
 	def __le__(self, other):
 
+		self_dim = self.sorted_list()
+		other_dim = other.sorted_list()
+
+
 		if not isinstance(other, Cube):
 			print("I can't compare different types")
 			return False
 
-		elif self.sorted_list()[0] <= other.sorted_list()[0] and self.sorted_list()[1] <= other.sorted_list()[1] and self.sorted_list()[2] <= other.sorted_list()[2]:
+		elif self_dim[0] <= other_dim[0] and self_dim[1] <= other_dim[1] and self_dim[2] <= other_dim[2]:
 			print("First cube fit in second cube")
 			return True
 
@@ -27,6 +31,6 @@ class Cube:
 			print("First cube not fit in second cube")
 			return False
 
-cube1 = Cube(3, 9, 6) 
-cube2 = Cube(8, 2, 7)
+cube1 = Cube(3, 5, 6) 
+cube2 = Cube(8, 4, 7)
 print("The answer is - ", cube1 <= cube2)
