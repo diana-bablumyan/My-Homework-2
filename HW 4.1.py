@@ -27,6 +27,7 @@ class Triangle:
 			else:
 				return False
 
+#Instances
 triangle1 = Triangle(7, 10, 4)
 triangle2 = Triangle(20, 8, 14)
 # print("Return true, when triangles are similar")
@@ -61,6 +62,7 @@ class Triangle:
 			else:
 				return False
 
+#Instances
 triangle1 = Triangle(30, 10, 12)
 triangle2 = Triangle(5, 4, 30)
 # print("Return true, when triangles are similar")
@@ -94,6 +96,7 @@ class Triangle:
 			else:
 				return False
 
+#Instances
 triangle1 = Triangle(60, 20)
 triangle2 = Triangle(60, 20)
 print("Return true, when triangles are similar")
