@@ -1,0 +1,31 @@
+bands:
+- name: The Beatles
+  origin: England
+  genres: Rock
+  members: 4
+  actnow: false
+  songs:
+  - Something
+  - Let It Be
+  - Come Toghether
+  - Don't Let Me Down
+- name: Pink Floyd
+  origin: England
+  genres: Rock
+  members: 6
+  actnow: false
+  songs:
+  - Another Brick in the Wall
+  - Hey You
+  - Wish You Were Here
+  - Time
+- name: Queen
+  origin: England
+  genres: Rock
+  members: 4
+  actnow: false
+  songs:
+  - We Will Rock You
+  - Bohemian Rhapsody
+  - Radio Ga Ga
+  - We Are the Champions
