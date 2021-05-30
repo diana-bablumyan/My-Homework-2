@@ -5,40 +5,26 @@ import requests
 
 # print(os.getcwd())
 
+with open('image_thr_json.json', 'r') as file:
+    data = json.load(file)
 
-with open("images_json.json", "r") as json_file:
-    data = json.load(json_file)
+link_list = []
+for i in data['images']:
+    link_list.append(i['link'])
+# print(link_list)
 
-
-images_link = []
-for image in data['images']:
-    images_link.append(image['link'])
-# print(images_link)
-
-
-def file_download():
-    file_names = ['image1.png', 'image2.png', 'image3.png', 'image4.png', 'image5.png']
-    j = 0
-    for i in images_link:
-        i = str(i)
-        try:
-            response = requests.get(i)
-            check = response.status_code
-            if check == 200:
-                with open(file_names[j], 'wb') as file:
-                    file.write(response.content)
-                    j += 1
-                print("Images are successfully  created!!!")
-            else:
-                print("Images are not created!!!", response.status_code, response.reason)
-        except ConnectionError:
-            print("Please, check your internet connection")
-
-# file_download()
+def download(link, number):
+    response = requests.get(link)
+    with open(f'photo{number}.png', 'wb') as image:
+        image.write(response.content)
 
 thread_list = []
-x = threading.Thread(target=file_download)
-thread_list.append(x)
-x.start()
+number = 1
+for link in link_list:
+    thread_ = threading.Thread(target=download, args=(link, number, ))
+    thread_list.append(thread_)
+    thread_.start()
+    number += 1
 
-
+for thrd in thread_list:
+    thrd.join()
