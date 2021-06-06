@@ -67,3 +67,33 @@ json_data = {
 with open("film_json", 'w') as file:
     json.dump(json_data, file, indent=4)
 
+# # 4. Films which release date is above 2010 and rate is between 3 and 5
+
+filtered_data = """SELECT * 
+                FROM film
+                WHERE release_year > 2010 and rate between 3 and 5
+                """
+result_4 = conn.execute(filtered_data)
+# pprint(result_4.fetchall())
+
+new_table = """ CREATE TABLE IF NOT EXISTS filtered_film(
+                                        'film_id' integer PRIMARY KEY,
+                                        'title' text,
+                                        'descreption' text,
+                                        'release_year' integer,            
+                                        'rate' integer,
+                                        'length' integer,
+                                        'speacial_features' text
+                                    ); """
+
+conn.execute(new_table)
+conn.commit()
+insert_query = """INSERT INTO filtered_film (film_id, title, descreption,
+                       release_year, rate, length, speacial_features)
+                       VALUES( ?, ?, ?, ?, ?, ?, ?);
+                 """
+
+for item in result_4:
+    print(item)
+    curs.execute(insert_query, item)
+conn.commit()
